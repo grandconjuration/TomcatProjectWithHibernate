@@ -42,7 +42,7 @@ public class Rule {
 	@Column(name = "GENERATEDCODE")
 	private String generatedCode;
 
-	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	@JoinTable(name = "RULECOLUMNS", joinColumns = @JoinColumn(name = "RULE_ID"), inverseJoinColumns = @JoinColumn(name = "COLUMN_ID"))
 	private List<AppColumn> allColumns = new ArrayList<AppColumn>();
 

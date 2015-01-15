@@ -2,8 +2,6 @@ import hibernate.HibernateConnector;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +12,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import domain.AppColumn;
 import domain.AppTable;
@@ -88,7 +84,7 @@ public class testServlet extends HttpServlet {
 			List<AppColumn> clist = rule.getAllColumns();
 			int i = 0;
 			for (AppColumn col : clist) {
-				System.out.println("COL num " + i + ": "+ col.getName());
+				System.out.println("COL num " + i + ": "+ col.getTable().getName());
 				i++;
 			}
 			
@@ -104,9 +100,6 @@ public class testServlet extends HttpServlet {
 				tx.rollback();
 			}
 			e.printStackTrace();
-		} catch (ParseException ex) {
-			Logger.getLogger(testServlet.class.getName()).log(Level.SEVERE,
-					null, ex);
 		} finally {
 			hibernateSession.close();
 			factory.close();
